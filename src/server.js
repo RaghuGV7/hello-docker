@@ -5,4 +5,7 @@ const app = new express();
 
 app.get("/", (req, res) => { res.send("Hello"); });
 
+app.get("/:name", (req, res) => { res.send(`Hello ${req.params.name}`); });
+
+
 app.listen(port, () => console.log(`Listening at ${port}...`));
