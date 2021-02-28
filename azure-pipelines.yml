@@ -10,23 +10,15 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  imageName: raghugv7/hello-docker
+  imageName: hello-docker
 
 steps:
 - task: Docker@2
-  displayName: Build Image
   inputs:
-   repository: $(imageName)
-   command: build
-   Dockerfile: Dockerfile
-
-- task: Docker@2
-  displayName: Push image
-  inputs:
-    containerRegistry: |
-      $(DockerHub)
-    repository: $(imageName)
-    command: push
+    containerRegistry: 'DockerHub'
+    repository: 'raghugv7/hello-docker'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
     tags: |
-      $(Build.BuildNumber)
+      $(Build.BuildId)
       latest
