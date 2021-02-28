@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  imageName: hello-docker
+  imageName: raghugv7/hello-docker
 
 steps:
 - task: Docker@2
